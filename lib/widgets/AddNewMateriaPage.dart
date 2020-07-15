@@ -129,7 +129,7 @@ class _AddNewMateriaPageState extends State<AddNewMateriaPage> {
                               )
                             ],
                           ),
-                        );
+                        ).then((value) => Navigator.pop(context));
                       }
                       else {
                         showDialog(
