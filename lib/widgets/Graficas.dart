@@ -34,7 +34,7 @@ class _GraficasState extends State<Graficas> {
         fillPatternFn: (_, __) => charts.FillPatternType.solid
       )
     ];
-    lineData.add(
+    lineData = [
       charts.Series<Materia, int>(
         id: 'Calificaciones',
         data: list,
@@ -42,7 +42,7 @@ class _GraficasState extends State<Graficas> {
         measureFn: (Materia materia, _) => materia.calificacion,
         fillPatternFn: (_, __) => charts.FillPatternType.solid
       )
-    );
+    ];
   }
   @override
   Widget build(BuildContext context) {
