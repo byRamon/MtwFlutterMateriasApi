@@ -18,6 +18,7 @@ class _AddNewMateriaPageState extends State<AddNewMateriaPage> {
   final _profesorController = TextEditingController();
   final _cuatrimestreController = TextEditingController();
   final _horarioController = TextEditingController();
+  final _calificacionController = TextEditingController();
   String _titulo = 'Nueva Materia';
 
   @override
@@ -27,6 +28,7 @@ class _AddNewMateriaPageState extends State<AddNewMateriaPage> {
       _profesorController.text = widget.materia.profesor;
       _cuatrimestreController.text = widget.materia.cuatrimestre;
       _horarioController.text = widget.materia.horario;
+      _calificacionController.text = widget.materia.calificacion.toString();
       _titulo = 'Actualizar Materia';
       super.initState();
     }
@@ -57,6 +59,10 @@ class _AddNewMateriaPageState extends State<AddNewMateriaPage> {
                 controller: _horarioController,
                 decoration: InputDecoration(hintText: 'Horario'),
               ),
+              TextField(
+                controller: _calificacionController,
+                decoration: InputDecoration(hintText: 'Calificacion'),
+              ),
               RaisedButton(
                 child: Text(widget.materia != null ? 'Actualizar' :'Guardar', style: TextStyle(color: Colors.white),),
                 color: Colors.purple,
@@ -66,6 +72,7 @@ class _AddNewMateriaPageState extends State<AddNewMateriaPage> {
                     'profesor' : _profesorController.text,
                     'cuatrimestre': _cuatrimestreController.text,
                     'horario': _horarioController.text,
+                    'calificacion': _calificacionController.text,
                     'id': widget.materia == null ? '0' : widget.materia.id
                   };
                   if(widget.materia == null){
@@ -124,6 +131,7 @@ class _AddNewMateriaPageState extends State<AddNewMateriaPage> {
                                   _profesorController.text = '';
                                   _cuatrimestreController.text = '';
                                   _horarioController.text = '';
+                                  _calificacionController.text = '';
                                 }, 
                                 child: Text('OK'),
                               )
@@ -139,13 +147,11 @@ class _AddNewMateriaPageState extends State<AddNewMateriaPage> {
                             actions: <Widget>[
                               FlatButton(
                                 child: Text('OK'),
-                                onPressed: (){
-                                  Navigator.pop(context);
-                                }
+                                onPressed: (){}
                               )
                             ],
                           ),
-                        );
+                        ).then((value) => Navigator.pop(context));
                         return;
                       }
                     });

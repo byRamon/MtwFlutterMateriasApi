@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'api/ApiService.dart';
 import 'model/Materia.dart';
 import 'widgets/AddNewMateriaPage.dart';
+import 'widgets/Graficas.dart';
 
 void main() {
   runApp(MaterialApp(title: 'Materias', home: MateriasPage()));
@@ -52,7 +54,19 @@ class _MateriasPageState extends State<MateriasPage> {
     this.context = context;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Materias'),
+        title: Row(
+          children: <Widget>[
+            Text('Materias'),
+            Spacer(),
+            FlatButton(
+              child: Icon(FontAwesomeIcons.solidChartBar, color: Colors.white,),
+              onPressed: () async {
+                await Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Graficas()));
+              },
+            ),
+          ],
+        ),
       ),
       body: FutureBuilder(
           future: _list,
